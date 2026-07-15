@@ -22,9 +22,9 @@
 
 | Check | Status | Notes |
 |-------|--------|-------|
-| Python Compatibility | 🟢 | The tech stack includes Python-compatible tools for deep learning, and the project can utilize Python in Google Colab for model development. |
+| Python Compatibility |🟡 | The tech stack includes Python-compatible tools for deep learning, and the project can utilize Python in Google Colab for model development. |
 | Data Readiness | 🟢 | The data is under 1GB and readily available, so minimal cleaning is required for students to start working with it effectively. |
-| Resource Check | 🟢 | The project uses free-tier tools in Google Colab, ensuring accessibility for students without specialized hardware. |
+| Resource Check | 🟡 | The dataset is exclusively provided in MATLAB data format (.mat). Furthermore, the milestones and stretch goals explicitly ask students to give "feedback on using MathWorks tools" and use a "Simulink model" to generate synthetic data. |
 
 **Student Fit Score:** 7/10  
 **Technical Depth Score:** 8/10  
