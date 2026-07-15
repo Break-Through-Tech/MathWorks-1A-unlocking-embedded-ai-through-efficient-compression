@@ -22,16 +22,16 @@
 
 | Check | Status | Notes |
 |-------|--------|-------|
-| Python Compatibility |🟡 | The tech stack includes Python-compatible tools for deep learning, and the project can utilize Python in Google Colab for model development. |
-| Data Readiness | 🟢 | The data is under 1GB and readily available, so minimal cleaning is required for students to start working with it effectively. |
-| Resource Check | 🟡 | The dataset is exclusively provided in MATLAB data format (.mat). Furthermore, the milestones and stretch goals explicitly ask students to give "feedback on using MathWorks tools" and use a "Simulink model" to generate synthetic data. |
+| Python Compatibility |🔴 | The dataset is provided exclusively in MATLAB data format (.mat), and the milestones explicitly require students to use a "Simulink model" and provide "feedback on using MathWorks tools." |
+| Data Readiness | 🟢 | The dataset scale is safe (Less than or equal to 1 GB),  with zero risk of Google Colab Out-of-Memory (OOM) crashes. However, it only contains partial documentation and will require some cleaning and preprocessing before model training can begin. |
+| Resource Check | 🟡 | The dataset being exclusively in MATLAB data format requires deep learning model compression (quantization/pruning) and navigating proprietary software licensing, all of which raise the difficulty outside the timeline, resource, and competency scope.|
 
 **Student Fit Score:** 7/10  
 **Technical Depth Score:** 8/10  
 **Overall Recommendation:** REVISE
 
 **Advisor Feedback Draft:**
-The project presents a solid real-world challenge that aligns well with students’ capabilities. However, ensure they have sufficient guidance on model compression techniques. Additionally, try to integrate more Python-based solutions to reduce reliance on MATLAB environments.
+The project presents a solid challenge and real-world value in optimizing edge models for the Fellows. However, as is the project currently relies on proprietary MATLAB/Simulink files, creating a tooling compliance block. To proceed, I recommend converting the dataset to standard open-source formats (like .csv) so fellows can execute all deep learning and compression tasks using pure Python frameworks.  
 
 ---
 
@@ -52,7 +52,7 @@ MathWorks is a leader in technical computing and model-based design. We provide 
 ## 🎯 The Challenge
 
 ### Project Summary
-In this project, you will use sensor signal data and deep learning to develop a smart appliance system that is optimized for embedded applications. You will learn how to build, train, and compress AI models while providing helpful insights about the usability of MathWorks products.
+In this project, you will use sensor data and deep learning to develop a smart appliance system optimized for embedded applications. You will learn how to build, train, and compress AI models while providing helpful insights about the usability of MathWorks products.
 
 ### Success Criteria
 Development of a model for a smart appliance application; performance analysis including inference speed, memory footprint, and accuracy; ability to discuss deep learning model compression and trade-offs; feedback on MathWorks tools.
