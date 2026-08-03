@@ -19,7 +19,7 @@ The project presents a solid challenge and real-world value in optimizing edge m
 # Smarter Devices, Smaller Models: Unlocking Embedded AI Through Efficient Compression
 
 **Company / Org:** MathWorks  
-**Challenge Advisors:** Nayara Aguiar and Shanmukh Srinivas  
+**Challenge Advisors:** Nayara Aguiar, [Email address]      
 **Program:** Break Through Tech AI Studio - Fall 2026
 
 ---
