@@ -1,21 +1,3 @@
-## 📋 BTT Internal Evaluation Notes
-*(This section is for BTT staff only — remove before sharing with students)*
-
-| Check | Status | Notes |
-|-------|--------|-------|
-| Python Compatibility |🔴 | The dataset is provided exclusively in MATLAB data format (.mat), and the milestones explicitly require students to use a "Simulink model" and provide "feedback on using MathWorks tools." |
-| Data Readiness | 🟢 | The dataset scale is safe (Less than or equal to 1 GB),  with zero risk of Google Colab Out-of-Memory (OOM) crashes. However, it only contains partial documentation and will require some cleaning and preprocessing before model training can begin. |
-| Resource Check | 🟡 | The dataset being exclusively in MATLAB data format requires deep learning model compression (quantization/pruning) and navigating proprietary software licensing, all of which raise the difficulty outside the timeline, resource, and competency scope.|
-
-**Student Fit Score:** 7/10  
-**Technical Depth Score:** 8/10  
-**Overall Recommendation:** REVISE
-
-**Advisor Feedback Draft:**
-The project presents a solid challenge and real-world value in optimizing edge models for the Fellows. However, as is the project currently relies on proprietary MATLAB/Simulink files, creating a tooling compliance block. To proceed, I recommend converting the dataset to standard open-source formats (like .csv) so fellows can execute all deep learning and compression tasks using pure Python frameworks.  
-
----
-
 # Smarter Devices, Smaller Models: Unlocking Embedded AI Through Efficient Compression
 
 **Company / Org:** MathWorks  
