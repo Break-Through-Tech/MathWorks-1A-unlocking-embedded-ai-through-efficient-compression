@@ -27,11 +27,16 @@ In this project, you will use sensor data and deep learning to develop a fault d
 
 Use these milestones to guide your work. Your team will create a **GitHub Projects board** to track tasks within each milestone.
 
-| Month      | Milestone                     | Key Activities                                                      |
-|------------|-------------------------------|--------------------------------------------------------------------|
-| **September** | Data Understanding & Preprocessing | Load and explore sensor data; visualize signals; apply standardization; document findings |
-| **October** | Model Development & Compression | Train baseline model; apply pruning, projection, and quantization; compare accuracy/size/speed trade-offs |
-| **November** | Evaluation & Presentation | Finalize models; document results; prepare final presentation |
+| Month | Milestone | Key Activities |
+| :--- | :--- | :--- |
+| September | Data Pipeline, Preprocessing & Baseline Model | • Ingest and preprocess rolling element bearing time-series vibration data (.mat format).<br>• Perform signal processing and feature extraction (time-domain, frequency-domain / FFT).<br>• Train baseline deep learning classifier (e.g., 1D-CNN or ResNet) for bearing fault diagnosis.<br>• Establish baseline metrics (Accuracy, F1-Score, Model Footprint in MB, FLOPs). |
+| October | Model Compression & Optimization | • Apply structured and unstructured pruning to eliminate redundant neural network weights.<br>• Implement Post-Training Quantization (PTQ) or Quantization-Aware Training (QAT) to convert float32 models to int8.<br>• Experiment with Knowledge Distillation to transfer fault detection capability to a compact student network.<br>• Profile accuracy vs. memory footprint trade-offs across compression techniques. |
+| November / December | Profiling, Interactive UI & Capstone Deliverables | • Evaluate inference latency, RAM footprint, and diagnostic accuracy under simulated edge resource constraints.<br>• Develop an interactive Streamlit application to visualize raw signal inputs, fault predictions, and model compression statistics.<br>• Finalize clean, reproducible GitHub repository, documentation, and stakeholder presentation deck. |
+
+### Stretch Goals
+* **Microcontroller / Edge Hardware Deployment:** Deploy compressed models onto physical edge microcontrollers or single-board computers (e.g., Raspberry Pi or STM32) and profile real-world execution latency.
+* **Real-Time Streaming Anomaly Detector:** Build a continuous stream-processing pipeline that ingests live vibration sensor data and detects early bearing degradation in real time.
+* **Cross-Operating Condition Generalization:** Benchmark compressed model robustness across varying rotational speeds, load conditions, and unseen bearing fault severities.
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
