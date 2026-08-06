@@ -27,11 +27,11 @@ In this project, you will use sensor data and deep learning to develop a fault d
 
 Use these milestones to guide your work. Your team will create a **GitHub Projects board** to track tasks within each milestone.
 
-| Month | Milestone | Key Activities |
-|---|---|---|
-| September | Data Understanding & Preprocessing | • Load and explore sensor data<br>• Visualize signals<br>• Apply standardization<br>• Document findings |
-| October | Model Development & Compression | • Train baseline model<br>• Apply pruning, projection, and quantization<br>• Compare accuracy/size/speed trade-offs |
-| November | Evaluation & Presentation | • Finalize models<br>• Document results<br>• Prepare final presentation |
+| Month      | Milestone                     | Key Activities                                                      |
+|------------|-------------------------------|--------------------------------------------------------------------|
+| **September** | Data Understanding & Preprocessing | Load and explore sensor data; visualize signals; apply standardization; document findings |
+| **October** | Model Development & Compression | Train baseline model; apply pruning, projection, and quantization; compare accuracy/size/speed trade-offs |
+| **November** | Evaluation & Presentation | Finalize models; document results; prepare final presentation |
 
 > **Note for the team:** Please create a GitHub Projects board in this repository to break these milestones into weekly tasks. Go to the **Projects** tab → **New project** → Choose **Board** → Add columns for each month.
 
