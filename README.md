@@ -15,6 +15,8 @@
 | Christina Peralta| @nina2k5      | Pipeline organization, cross‑team communication, and integration of analytical outputs    |
 | Kavya Pokharel   | @kavyapokharel| Visualization, Model Training, Dataset, Overall                                                      |
 | Alex Tamanaha| @alexdlct| Visualization, Model Training, Dataset, Overall                                                      |
+| Name| @user| Visualization, Model Training, Dataset, Overall                                                      |
+| Name| @user| Visualization, Model Training, Dataset, Overall                                                      |
 
 
 ---
