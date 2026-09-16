@@ -16,7 +16,7 @@
 | Kavya Pokharel   | @kavyapokharel| Visualization, Model Training, Dataset, Overall                                                      |
 | Alex Tamanaha| @alexdlct| Visualization, Model Training, Dataset, Overall                                                      |
 | Sharanya Raj | @Sharanya-Raj| Feature engineering, Visualization, Model Training, Dataset, Overall                                                      |
-| Name| @user| Visualization, Model Training, Dataset, Overall                                                      |
+| Navya Putrevu| @navyaput-lab| Visualization, Model Training, Dataset, Overall                                                      |
 
 
 ---
