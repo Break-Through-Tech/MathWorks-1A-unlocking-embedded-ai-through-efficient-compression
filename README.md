@@ -15,8 +15,6 @@
 | Christina Peralta| @nina2k5      | Pipeline organization, cross‑team communication, and integration of analytical outputs    |
 | Kavya Pokharel   | @kavyapokharel| Visualization, Model Training, Dataset, Overall                                                      |
 | Alex Tamanaha| @alexdlct| Visualization, Model Training, Dataset, Overall                                                      |
-| Sharanya Raj | @Sharanya-Raj| Feature engineering, Visualization, Model Training, Dataset, Overall                                                      |
-| Navya Putrevu| @navyaput-lab| Visualization, Model Training, Dataset, Overall                                                      |
 
 
 ---
