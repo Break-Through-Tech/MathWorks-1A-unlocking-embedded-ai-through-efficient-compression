@@ -1,1 +1,7 @@
 
+# MATLAB autosave and backup files
+*.asv
+*.m~
+
+# Generated data not meant for the repo
+data/standardizedBearingData.mat
