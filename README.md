@@ -15,17 +15,31 @@
 | Christina Peralta| @nina2k5      | Pipeline organization, cross‑team communication, and integration of analytical outputs    |
 | Kavya Pokharel   | @kavyapokharel| Visualization, Model Training, Dataset, Overall                                                      |
 | Alex Tamanaha| @alexdlct| Visualization, Model Training, Dataset, Overall                                                      |
-| Sharanya Raj | @Sharanya-Raj| Feature engineering, Visualization, Model Training, Dataset, Overall                                                      |
-| Navya Putrevu| @navyaput-lab| Visualization, Model Training, Dataset, Overall                                                      |
+| Sharanya Raj| @Sharanya-Raj| EDA, Visualization, GRU / CNN-GRU Model Implementation, Model Compression                                                      |
+
 
 
 ---
 
 ## 🎯 **Project Highlights**
 
-**Example:**
+**Summary:**
+All of us worked individually on initial exploratory data analysis and visualization, comparing results in order to ensure we were all on the right track.
+We then proceeded to divide out different models to test in the following distribution:
 
-- Developed a machine learning model using `[model type/technique]` to address `[challenge project task]`.
+- **Daniel**: CNN Model, Hybrid LTSM/GRU Model
+    -   Validation Accuracy: 100%
+- **Kavya**: CNN Model
+    -   Validation Accuracy: 100%
+- **Navya**: Small Conv1D (2 Layers) CNN
+    -   Validation Accuracy: 93.64%
+- **Sharanya**: GRU Model, CNN / GRU Hybrid Model with 1 Conv1D layer
+    -   Validation Accuracy: 99.02%
+- **Christina**: GRU Model
+    -   Validation Accuracy: 66.67%
+- **Alex**: LSTM Model
+    -   Validation Accuracy: 98%
+
 - Achieved `[key metric or result]`, demonstrating `[value or impact]` for `[host company]`.
 - Generated actionable insights to inform business decisions at `[host company or stakeholders]`.
 - Implemented `[specific methodology]` to address industry constraints or expectations.
