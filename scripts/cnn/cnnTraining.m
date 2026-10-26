@@ -62,4 +62,4 @@ learnables = sum(metrics.NumberOfLearnables)
 flashKB = sum(metrics.("ParameterMemory (MB)")) * 1024
 
 %% Save
-%save("../../models/uncompressed/" + saveName + ".mat", 'net');
+save("../../models/uncompressed/" + saveName + ".mat", 'net');

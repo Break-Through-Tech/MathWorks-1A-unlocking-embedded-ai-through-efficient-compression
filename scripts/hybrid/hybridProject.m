@@ -2,7 +2,7 @@
 clear
 seed     = 0;
 loadName = "daniel_hybrid_lstm_gru";
-goals    = [0.3 0.5 0.6 0.7 0.8 0.9];   % compression levels to try
+goals    = [0.3 0.5 0.6 0.7 0.8 0.9];   
 fineTuneEpochs = 5;
 
 %% Load data

@@ -2,8 +2,8 @@
 clear
 seed     = 0;
 f1       = 8;     % conv filters
-nLSTM    = 16;    % LSTM units
-nGRU     = 16;    % GRU units
+nLSTM    = 16;    % LSTM
+nGRU     = 16;    % GRU
 epochs   = 20;
 saveName = "daniel_hybrid_lstm_gru";
 
@@ -27,7 +27,7 @@ layers = [
     convolution1dLayer(32, f1, Padding="same")
     batchNormalizationLayer
     reluLayer
-    maxPooling1dLayer(16, Stride=16)        % shrink 5000 -> ~312 steps
+    maxPooling1dLayer(16, Stride=16)     
 
     lstmLayer(nLSTM)
     gruLayer(nGRU, OutputMode="last")

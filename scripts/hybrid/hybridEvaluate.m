@@ -18,7 +18,7 @@ net = s.(f{1});
 %% Results
 YPred = scores2label(minibatchpredict(net, XTest), classNames);
 testAccuracy = mean(YPred == YTest)
-learnables = sum(cellfun(@numel, net.Learnables.Value))   % counted by hand (GRU)
+learnables = sum(cellfun(@numel, net.Learnables.Value))   
 modelSizeKB = learnables * bytesPerWeight / 1024
 
 %% Confusion matrix

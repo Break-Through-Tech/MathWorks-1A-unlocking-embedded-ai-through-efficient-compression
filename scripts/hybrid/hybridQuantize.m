@@ -24,7 +24,7 @@ qNet = quantize(quantObj);
 %% Results
 YPred = scores2label(minibatchpredict(qNet, XTest), classNames);
 testAccuracy = mean(YPred == YTest)
-modelSizeKB = learnables * 1 / 1024     % int8 = 1 byte per weight (estimate)
+modelSizeKB = learnables * 1 / 1024     %
 
 %% Save
 save("../../models/compressed/" + saveName + ".mat", 'qNet');
