@@ -1,45 +1,49 @@
-%% Part 1: Load data and put each recording in its own package
+%% Settings
 clear
-rng(0);                                   % same results every run
-load('../data/standardized.mat');
+seed     = 0;
+filters  = [4 8 16];                 % baseline = [8 16 32]
+epochs = 20;
+saveName = "daniel_cnn_optimized";
+
+%% Load data
+rng(seed);
+load('../../data/standardized.mat');
 
 XTrain = num2cell(trainStandardized', 1)';
 XVal   = num2cell(valStandardized', 1)';
 XTest  = num2cell(testStandardized', 1)';
 
-%% Part 2: Convert labels to categories
 YTrain = categorical(trainLabels(:));
 YVal   = categorical(valLabels(:));
 YTest  = categorical(testLabels(:));
-
 classNames = categories(YTrain);
 
-%% Part 3: Build the 1D CNN
+%% Build the CNN
 layers = [
     sequenceInputLayer(1, MinLength=5000)
 
-    convolution1dLayer(32, 8, Padding="same")
+    convolution1dLayer(32, filters(1), Padding="same")
     batchNormalizationLayer
     reluLayer
     maxPooling1dLayer(4, Stride=4)
 
-    convolution1dLayer(16, 16, Padding="same")
+    convolution1dLayer(16, filters(2), Padding="same")
     batchNormalizationLayer
     reluLayer
     maxPooling1dLayer(4, Stride=4)
 
-    convolution1dLayer(8, 32, Padding="same")
+    convolution1dLayer(8, filters(3), Padding="same")
     batchNormalizationLayer
     reluLayer
 
     globalAveragePooling1dLayer
     fullyConnectedLayer(3)
     softmaxLayer
-    ];
+];
 
-%% Part 4: Training settings
+%% Train
 options = trainingOptions("adam", ...
-    MaxEpochs=30, ...
+    MaxEpochs=epochs, ...
     MiniBatchSize=32, ...
     Shuffle="every-epoch", ...
     ValidationData={XVal, YVal}, ...
@@ -47,18 +51,15 @@ options = trainingOptions("adam", ...
     Plots="training-progress", ...
     Verbose=false);
 
-%% Part 5: Train
 net = trainnet(XTrain, YTrain, layers, "crossentropy", options);
 
-%% Part 6: Test accuracy
-scores = minibatchpredict(net, XTest);
-YPred  = scores2label(scores, classNames);
+%% Results
+YPred = scores2label(minibatchpredict(net, XTest), classNames);
 testAccuracy = mean(YPred == YTest)
 confusionchart(YTest, YPred);
-
-%% Part 7: Flash estimate (weights)
 metrics = estimateNetworkMetrics(net);
-totalLearnables = sum(metrics.NumberOfLearnables)
-flashMB = sum(metrics.("ParameterMemory (MB)"));
-flashKB = flashMB * 1024
+learnables = sum(metrics.NumberOfLearnables)
+flashKB = sum(metrics.("ParameterMemory (MB)")) * 1024
 
+%% Save
+%save("../../models/uncompressed/" + saveName + ".mat", 'net');
