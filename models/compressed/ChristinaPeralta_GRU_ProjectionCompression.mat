@@ -1,0 +1,122 @@
+clear
+clc
+
+% Load the trained GRU model and standardized bearing data
+load("GRU_100Percent_Model.mat")
+load("standardizedBearingData.mat")
+
+%% Prepare training sequences for compression
+numTrain = size(trainDataStandardized, 1);
+XTrain = cell(numTrain, 1);
+
+for i = 1:numTrain
+    XTrain{i} = trainDataStandardized(i, :).';
+end
+
+%% Convert the trained network to a dlnetwork
+lgraph = layerGraph(trainedNetwork.Layers);
+lgraph = removeLayers(lgraph, "softmax");
+lgraph = removeLayers(lgraph, "classoutput");
+dlnet = dlnetwork(lgraph);
+
+%% Count learnables in the original model
+originalCount = sum(cellfun(@numel, dlnet.Learnables.Value));
+
+%% Prepare test sequences
+numTest = size(testDataStandardized, 1);
+XTest = cell(numTest, 1);
+
+for i = 1:numTest
+    XTest{i} = testDataStandardized(i, :).';
+end
+
+trueLabels = categorical(testLabels);
+classNames = categories(categorical(trainLabels));
+
+%% Test the original model
+% The original SeriesNetwork uses one row per sequence.
+XTestOriginal = cell(numTest, 1);
+
+for i = 1:numTest
+    XTestOriginal{i} = testDataStandardized(i, :);
+end
+
+originalPredictions = classify(trainedNetwork, XTestOriginal);
+originalAccuracy = mean(originalPredictions == trueLabels);
+
+%% Compress and test at several explained-variance goals
+goals = [0.99 0.97 0.95];
+
+numGoals = numel(goals);
+compressedCounts = zeros(1, numGoals);
+compressedAccuracies = zeros(1, numGoals);
+compressedModels = cell(1, numGoals);
+
+for k = 1:numGoals
+    goal = goals(k);
+
+    fprintf("\nCompressing with ExplainedVarianceGoal = %.2f...\n", goal);
+
+    compressedModels{k} = compressNetworkUsingProjection( ...
+        dlnet, XTrain, ...
+        ExplainedVarianceGoal=goal);
+
+    compressedCounts(k) = sum(cellfun( ...
+        @numel, compressedModels{k}.Learnables.Value));
+
+    scores = minibatchpredict(compressedModels{k}, XTest);
+    predictions = scores2label(scores, classNames);
+    compressedAccuracies(k) = mean(predictions == trueLabels);
+
+    fprintf("Learnables: %d\n", compressedCounts(k));
+    fprintf("Test accuracy: %.2f%%\n", ...
+        compressedAccuracies(k) * 100);
+end
+
+%% Print original and compressed model results
+allCounts = [originalCount, compressedCounts];
+allAccuracies = [originalAccuracy, compressedAccuracies];
+allNames = ["Original", "Goal 0.99", "Goal 0.97", "Goal 0.95"];
+
+fprintf("\nResults:\n");
+for k = 1:numel(allNames)
+    fprintf("%-12s Learnables: %d | Test accuracy: %.2f%%\n", ...
+        allNames(k), allCounts(k), allAccuracies(k) * 100);
+end
+
+%% Estimate weight storage, assuming 4 bytes per learnable
+fprintf("\nEstimated weight storage (assuming 4 bytes per learnable):\n");
+for k = 1:numel(allNames)
+    fprintf("%-12s %.2f KB\n", allNames(k), allCounts(k) * 4 / 1024);
+end
+
+%% Save the compressed models
+netProjection99 = compressedModels{1};
+netProjection97 = compressedModels{2};
+netProjection95 = compressedModels{3};
+
+save("GRU_Projection_Comparison.mat", ...
+    "netProjection99", "netProjection97", "netProjection95");
+
+%% Label each model by its actual learnable reduction
+percentRemoved = (originalCount - allCounts) ./ originalCount * 100;
+
+labels = ["Original (0%)", ...
+    compose("%.1f%% compressed", percentRemoved(2:end))];
+
+%% Graph learnable counts
+figure
+bar(allCounts)
+xticklabels(labels)
+ylabel("Number of learnable parameters")
+title("GRU Learnable Parameters by Compression Level")
+grid on
+
+%% Graph test accuracy
+figure
+bar(allAccuracies * 100)
+xticklabels(labels)
+ylabel("Test accuracy (%)")
+title("GRU Test Accuracy by Compression Level")
+ylim([0 100])
+grid on
